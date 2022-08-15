@@ -1,5 +1,6 @@
 package com.ded.admin.domain.posts;
 
+import com.ded.admin.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,7 +13,7 @@ import javax.persistence.*;
 //Entity :  테이블과 링크될 클래스임을 나타냄
 //기본값으로 클래스의 카멜케이스 이름을 언더스코어 네이밍(_) 으로 테이블 이름을 매칭함
 // SalesManager.java -> sales_manager table
-public class Posts {
+public class Posts extends BaseTimeEntity {
     //Posts 클래스는 실제 DB의 테이블과 매칭될 클래스이며 보통 Entity 클래스라고 합니다.
     //JPA를 사용하면 DB데이터에 작업할 경우 실제 쿼리를 날리기보다는, 이 Entity 클래스의 수정을 통해 작업합니다.
 
