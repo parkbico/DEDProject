@@ -26,6 +26,12 @@ public class IndexController {
         return "index";
     }
 
+    @GetMapping("/index2")
+    public String index2(Model model){ //model : 서버 템플릿 엔진에서 사용할 수 있는 객체를 저장할 수 있습니다.
+        //여기에서는 postsService.findAllDesc() 로 가져온 결과를 posts 로 index.mustache에 전달합니다.
+        return "index2";
+    }
+
     @GetMapping("/posts/save")
     public String postsSave() {
         return "posts-save";
