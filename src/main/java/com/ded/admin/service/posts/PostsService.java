@@ -8,6 +8,7 @@ import com.ded.admin.web.dto.PostsResponseDto;
 import com.ded.admin.web.dto.PostsSaveRequestDto;
 import com.ded.admin.web.dto.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -47,9 +48,17 @@ public class PostsService {
 
         return new PostsResponseDto(entity);
     }
+
     @Transactional(readOnly = true)
     public List<PostsListResponseDto> findAllDesc() {
         return postsRepository.findAllDesc().stream()
+                .map(PostsListResponseDto::new)
+                .collect(Collectors.toList());
+    }
+
+    @Transactional(readOnly = true)
+    public List<PostsListResponseDto> findAllAsc() {
+        return postsRepository.findAll(Sort.by(Sort.Direction.ASC, "id")).stream()
                 .map(PostsListResponseDto::new)
                 .collect(Collectors.toList());
     }
