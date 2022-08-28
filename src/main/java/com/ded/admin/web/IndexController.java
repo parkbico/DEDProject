@@ -26,6 +26,18 @@ public class IndexController {
         return "index";
     }
 
+    @GetMapping("/login")
+    public String login(Model model){ //model : 서버 템플릿 엔진에서 사용할 수 있는 객체를 저장할 수 있습니다.
+        //로그인페이지
+        return "login";
+    }
+
+    @GetMapping("/main")
+    public String main(Model model){ //model : 서버 템플릿 엔진에서 사용할 수 있는 객체를 저장할 수 있습니다.
+        //메인 페이지
+        return "main";
+    }
+
     @GetMapping("/index2")
     public String index2(Model model){ //model : 서버 템플릿 엔진에서 사용할 수 있는 객체를 저장할 수 있습니다.
         //여기에서는 postsService.findAllDesc() 로 가져온 결과를 posts 로 index.mustache에 전달합니다.
