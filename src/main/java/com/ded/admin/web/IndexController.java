@@ -1,5 +1,6 @@
 package com.ded.admin.web;
 
+import com.ded.admin.service.csQna.BoardQnaService;
 import com.ded.admin.service.posts.PostsService;
 import com.ded.admin.web.dto.PostsResponseDto;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +19,7 @@ public class IndexController {
     //View Resolver : URL 요청 결과를 전달할 타입과 값을 지정하는 관리자 격으로 볼 수 있음
 
     private final PostsService postsService;
+    private final BoardQnaService boardQnaService;
 
     @GetMapping("/")
     public String index(Model model){ //model : 서버 템플릿 엔진에서 사용할 수 있는 객체를 저장할 수 있습니다.
@@ -70,6 +72,14 @@ public class IndexController {
         model.addAttribute("post", dto);
 
         return "posts-update";
+    }
+
+    @GetMapping("/boardQna")
+    public String boardQna(Model model){ //model : 서버 템플릿 엔진에서 사용할 수 있는 객체를 저장할 수 있습니다.
+        //여기에서는 postsService.findAllDesc() 로 가져온 결과를 posts 로 index.mustache에 전달합니다.
+        model.addAttribute("boardQna", boardQnaService.findAllAsc());
+//        model.addAttribute("posts", postsService.findAllAsc());
+        return "boardQna";
     }
 
 }

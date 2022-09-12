@@ -57,7 +57,9 @@ dependencies {
     //마리아 db 사용을 위해 추가
     runtimeOnly('org.mariadb.jdbc:mariadb-java-client')
 
-
+    //정적 요소 변동 시 자동 반영하기
+    //https://nam-ki-bok.github.io/spring/Devtools/
+    compile('org.springframework.boot:spring-boot-devtools')
 
 }
 
