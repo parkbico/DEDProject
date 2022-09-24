@@ -1,6 +1,8 @@
 package com.ded.admin.web;
 
+import com.ded.admin.domain.csQna.BoardQna;
 import com.ded.admin.service.csQna.BoardQnaService;
+import com.ded.admin.web.dto.BoardQnaSaveRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,10 +13,10 @@ import org.springframework.web.bind.annotation.*;
 public class BoardQnaApiController {
     private final BoardQnaService boardQnaService;
 
-//    @PostMapping("/api/v1/posts")
-//    public Long save(@RequestBody PostsSaveRequestDto requestDto){
-//        return postsService.save(requestDto);
-//    }
+    @PostMapping("/api/v1/boardQna")
+    public Long save(@RequestBody BoardQnaSaveRequestDto requestDto){
+        return boardQnaService.save(requestDto);
+    }
 //
 //    @PutMapping("/api/v1/posts/{id}")
 //    public Long update(@PathVariable Long id , @RequestBody PostsUpdateRequestDto requestDto){

@@ -14,12 +14,12 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Service
 public class BoardQnaService {
-    private final BoardQnaRepository csQnaRepository;
+    private final BoardQnaRepository boardQnaRepository;
 
-//    @Transactional
-//    public Long save(PostsSaveRequestDto requestDto){
-//        return csQnaRepository.save(requestDto.toEntity()).getId();
-//    }
+    @Transactional
+    public Long save(BoardQnaSaveRequestDto requestDto){
+        return boardQnaRepository.save(requestDto.toEntity()).getQnaSeq();
+    }
 //
 //    @Transactional
 //    public Long update(Long id , PostsUpdateRequestDto requestDto){
@@ -54,7 +54,7 @@ public class BoardQnaService {
 //
     @Transactional(readOnly = true)
     public List<BoardQnaListResponseDto> findAllAsc() {
-        return csQnaRepository.findAll(Sort.by(Sort.Direction.ASC, "qnaSeq")).stream()
+        return boardQnaRepository.findAll(Sort.by(Sort.Direction.ASC, "qnaSeq")).stream()
                 .map(BoardQnaListResponseDto::new)
                 .collect(Collectors.toList());
     }

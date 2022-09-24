@@ -58,6 +58,7 @@ public class BoardQna {
         this.fileYn = fileYn;
         this.registerUser = registerUser;
         this.registerDate = registerDate;
+
         this.answerStatus = answerStatus;
         this.answerContent = answerContent;
         this.answerUser = answerUser;
