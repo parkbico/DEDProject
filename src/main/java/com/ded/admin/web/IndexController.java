@@ -1,7 +1,9 @@
 package com.ded.admin.web;
 
+import com.ded.admin.domain.csQna.BoardQna;
 import com.ded.admin.service.csQna.BoardQnaService;
 import com.ded.admin.service.posts.PostsService;
+import com.ded.admin.web.dto.BoardQnaResponseDto;
 import com.ded.admin.web.dto.PostsResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -80,6 +82,14 @@ public class IndexController {
         model.addAttribute("boardQna", boardQnaService.findAllAsc());
 //        model.addAttribute("posts", postsService.findAllAsc());
         return "boardQna";
+    }
+
+    @GetMapping("/boardQna/update/{qnaSeq}")
+    public String boardQnaUpdate(@PathVariable Long qnaSeq, Model model) {
+        BoardQnaResponseDto dto = boardQnaService.findById(qnaSeq);
+        model.addAttribute("boardQna", dto);
+
+        return "boardQna-update";
     }
 
 }

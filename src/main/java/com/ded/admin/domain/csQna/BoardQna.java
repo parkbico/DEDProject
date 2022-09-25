@@ -38,7 +38,7 @@ public class BoardQna {
     private String registerUser;
     private LocalDateTime registerDate;
 
-    private int answerStatus;
+    private int answerStatus; //status 로 함께 사용 , 생성은 해두나 개발 시 사용하지 않겠음
     private String answerContent;
     private String answerUser;
     private LocalDateTime answerDate;
@@ -65,9 +65,12 @@ public class BoardQna {
         this.answerDate = answerDate;
     }
 //
-    public void update(String answerContent , String answerUser){
+    public void update(int status  , String answerContent , String answerUser , LocalDateTime answerDate){
+        //관리자가 답변 달았을때의 업데이트
+        this.status = status;
         this.answerContent = answerContent;
         this.answerUser = answerUser;
+        this.answerDate = answerDate;
     }
 
 }
