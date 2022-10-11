@@ -17,7 +17,7 @@ public class BoardQnaSaveRequestDto {
     private int status;
     private int fileYn;
     private String registerUser;
-    private LocalDateTime registerDate;
+    //private LocalDateTime registerDate;
 
 
     @Builder
