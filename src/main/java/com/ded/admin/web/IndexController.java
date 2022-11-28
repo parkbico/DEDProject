@@ -1,8 +1,10 @@
 package com.ded.admin.web;
 
 import com.ded.admin.domain.csQna.BoardQna;
+import com.ded.admin.domain.tbContentMain.TbContentMainRepository;
 import com.ded.admin.service.csQna.BoardQnaService;
 import com.ded.admin.service.posts.PostsService;
+import com.ded.admin.service.tbContentMain.TbContentMainService;
 import com.ded.admin.web.dto.BoardQnaResponseDto;
 import com.ded.admin.web.dto.PostsResponseDto;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +24,7 @@ public class IndexController {
 
     private final PostsService postsService;
     private final BoardQnaService boardQnaService;
+    private final TbContentMainService tbContentMainService;
 
     @GetMapping("/")
     public String index(Model model){ //model : 서버 템플릿 엔진에서 사용할 수 있는 객체를 저장할 수 있습니다.
@@ -90,6 +93,13 @@ public class IndexController {
         model.addAttribute("boardQna", dto);
 
         return "boardQna-update";
+    }
+
+    //2022.11.28 컨텐츠 목록 페이지로 이동
+    @GetMapping("/contentMain")
+    public String contentMain(Model model){
+        model.addAttribute("contentMain", tbContentMainService.findAllDesc());
+        return "contentMain";
     }
 
 }
