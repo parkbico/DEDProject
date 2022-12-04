@@ -102,4 +102,10 @@ public class IndexController {
         return "contentMain";
     }
 
+    @GetMapping("/contentMainSave")
+    public String contentMainSave(Model model){
+//        model.addAttribute("contentMain", tbContentMainService.findAllDesc());
+        return "contentMainSave";
+    }
+
 }

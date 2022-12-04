@@ -22,6 +22,7 @@
                         <div class="card mb-4">
                             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                 <h6 class="m-0 font-weight-bold text-primary">DataTables with Hover</h6>
+                                <button id="registerBtn" type="button" class="btn btn-primary mb-1">등록</button>
                             </div>
                             <div class="table-responsive p-3">
                                 <table class="table align-items-center table-flush table-hover" id="dataTableHover">
@@ -32,12 +33,12 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    {{#contentMain}}
-                                        <tr>
-                                            <td>{{cSeq}}</td>
-                                            <td><a href="/boardQna/update/{{cSeq}}">{{name}}</a></td>
-                                        </tr>
-                                    {{/contentMain}}
+<!--                                    {{#contentMain}}-->
+<!--                                        <tr>-->
+<!--                                            <td>{{cSeq}}</td>-->
+<!--                                            <td>??</td>-->
+<!--                                        </tr>-->
+<!--                                    {{/contentMain}}-->
                                     </tbody>
                                 </table>
                             </div>
@@ -102,14 +103,19 @@
 
 <!-- Page level custom scripts -->
 <script>
-    $(document).ready(function () {
-      $('#dataTable').DataTable(); // ID From dataTable
-      $('#dataTableHover').DataTable({
-         order: [[1, 'asc']]
-      }); // ID From dataTable with Hover
-      $('#dataTableHover2').DataTable(); // ID From dataTable with Hover
+$(document).ready(function () {
+    $('#dataTable').DataTable(); // ID From dataTable
+    $('#dataTableHover').DataTable({
+     order: [[1, 'asc']]
+    }); // ID From dataTable with Hover
+    $('#dataTableHover2').DataTable(); // ID From dataTable with Hover
+
+    $('#registerBtn').on('click', function () {
+        console.log("등록 페이지로 이동하기");
+        location.href = "/contentMainSave";
     });
-  </script>
+});
+</script>
 
 </body>
 

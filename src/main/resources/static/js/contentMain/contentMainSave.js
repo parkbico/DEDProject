@@ -1,14 +1,19 @@
 var main = {
     init : function () {
         var _this = this;
-//        $('#btn-save').on('click', function () {
-//            _this.save();
-//        });
+        $('#btn-save').on('click', function () {
+            _this.save();
+        });
 
         $('#btn-update').on('click', function () {
             _this.update();
         });
 
+        $('#btn-delete').on('click', function () {
+            _this.delete();
+        });
+
+        //파일 등록 시 하단에 등록된 파일 목록 붙이기
         $('#files').on('change' , function(){
             console.log("변화가 있었다.");
             var fileInput =  $('input[name="files"]');
@@ -23,18 +28,19 @@ var main = {
                 }
             }
         });
-
-//        $('#btn-delete').on('click', function () {
-//            _this.delete();
-//        });
     },
-//    save : function () {
-//        var data = {
-//            title: $('#title').val(),
-//            author: $('#author').val(),
-//            content: $('#content').val()
-//        };
-//
+    save : function () {
+        var data = {
+            title: $('#title').val(),
+            author: $('#author').val(),
+            content: $('#content').val(),
+        };
+
+        var files = $('input[name="files"]')[0].files;
+
+        console.dir(files);
+
+
 //        $.ajax({
 //            type: 'POST',
 //            url: '/api/v1/posts',
@@ -47,47 +53,28 @@ var main = {
 //        }).fail(function (error) {
 //            alert(JSON.stringify(error));
 //        });
-//    },
-
-    update : function () {
-
-        console.log(" 답변 내용 저장하기");
-
-        var files = $('input[name="files"]')[0].files;
-
-
-        var data = {
-            answerContent: $('#answerContent').val(),
-        };
-
-        $.extend(params, {
-            grpNo: _grpNo,
-            netNo: _netNo,
-            itemKind: _itemKind,
-            viewType: 'DST',
-            dataType: 'RAW',
-            ip: rowdata.dip
-        });
-
-        for(var i = 0 ; i < files.length ; i++ ){
-            console.dir(files[i]);
-        }
-
-        var id = $('#id').val();
-
-        $.ajax({
-            type: 'PUT',
-            url: '/api/v1/boardQna/'+id,
-            dataType: 'json',
-            contentType:'application/json; charset=utf-8',
-            data: JSON.stringify(data)
-        }).done(function() {
-            alert('글이 수정되었습니다.');
-            window.location.href = '/';
-        }).fail(function (error) {
-            alert(JSON.stringify(error));
-        });
     },
+//    update : function () {
+//        var data = {
+//            title: $('#title').val(),
+//            content: $('#content').val()
+//        };
+//
+//        var id = $('#id').val();
+//
+//        $.ajax({
+//            type: 'PUT',
+//            url: '/api/v1/posts/'+id,
+//            dataType: 'json',
+//            contentType:'application/json; charset=utf-8',
+//            data: JSON.stringify(data)
+//        }).done(function() {
+//            alert('글이 수정되었습니다.');
+//            window.location.href = '/';
+//        }).fail(function (error) {
+//            alert(JSON.stringify(error));
+//        });
+//    },
 //    delete : function () {
 //        var id = $('#id').val();
 //
