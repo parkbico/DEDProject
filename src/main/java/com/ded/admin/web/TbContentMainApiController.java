@@ -1,7 +1,10 @@
 package com.ded.admin.web;
 
 import com.ded.admin.service.tbContentMain.TbContentMainService;
+import com.ded.admin.web.dto.PostsSaveRequestDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RequiredArgsConstructor
@@ -11,5 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class TbContentMainApiController {
     private final TbContentMainService tbContentMainService;
 
+//    @PostMapping("/api/v1/contentMain")
+//    public Long save(@RequestBody PostsSaveRequestDto requestDto){
+//        return tbContentMainService.save(requestDto);
+//    }
 
 }
